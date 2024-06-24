@@ -14,6 +14,7 @@
 
 import os
 import sys
+import phonetic as ph
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -65,7 +66,7 @@ def callback():
 def message_text(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text)
+        TextSendMessage(text=ph.read(event.message.text))
     )
 
 
